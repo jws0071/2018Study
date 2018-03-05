@@ -1,5 +1,50 @@
 
 public class study02 {
+	
+	public static void main(String[] args) {
+			int[] num = new int[20000]; //10���� �迭
+			int[] result = new int[20000];
+			int y = 0;
+			for (int i=0; i <= 10000; i++) {
+				num[i] = sum_arr(Integer.toString(i)); 
+				result[i] = i;
+			}
+			for (int j=0; j<=10000; j++) {
+				for (int i=0; i<=10000; i++) {
+					if(num[j] == result[i] ) {
+						result[i] = 0;
+					}
+					
+				}
+			}
+			
+			for (int i=0; i<=10000; i++) {
+				if(result[i] != 0 ) {
+					System.out.println(result[i]);;
+				}
+				
+			}
+			
+
+	}
+	public static int sum_arr(String value) {
+		int sum = 0,num_t= 0, result_sum=0;
+		char[] array_word = new char[value.length()];
+		char re_sum;
+		for (int i = 0; i < array_word.length; i++) {
+			array_word[i] = (value.charAt(i));
+   }
+		for (int i =0; i < array_word.length; i++ ) {
+			num_t = (int) array_word[i] - 48;
+			sum += num_t;
+		}
+		result_sum = Integer.parseInt(value) + sum;
+		return result_sum;
+
+		
+	}
+		
+
 
 }
 
