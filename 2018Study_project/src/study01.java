@@ -2,11 +2,11 @@ public class study01 {
 
 	public static void main(String[] args) {
 		
-		String[] num10 = new String[10000]; //10Áø¼ö ¹è¿­
-		String[] num12 = new String[10000]; //12Áø¼ö ¹è¿­
-		String[] num16 = new String[10000]; //16Áø¼ö ¹è¿­
+		String[] num10 = new String[10000]; //10ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
+		String[] num12 = new String[10000]; //12ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
+		String[] num16 = new String[10000]; //16ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­
 		
-		int fin_result_10,fin_result_12,fin_result_16 = 0;
+		int fin_result_10 = 0,fin_result_12 = 0,fin_result_16 = 0;
 		int y = 0;
 		for (int i=1000; i <= 9999; i++) {
 			
@@ -24,18 +24,21 @@ public class study01 {
 			fin_result_16 = Integer.parseInt(new_arr(num16[y]));
 			*/
 			
+			
 			fin_result_10 = new_arr(num10[y]);
 			fin_result_12 = new_arr(num12[y]);
 			fin_result_16 = new_arr(num16[y]);
 			
-			if(fin_result_10 == fin_result_12 && fin_result_10==fin_result_16) {
-				System.out.println(num10[y]); // 10Áø¼ö¿Í 12Áø¼ö // 10Áø¼ö¿Í 16Áø¼ö ºñ±³ÈÄ µ¿ÀÏÇÏ¸é 10Áø¼ö ¸®ÅÏ
+			if(fin_result_10 == fin_result_12 && fin_result_10==fin_result_16 && fin_result_12==fin_result_16) {
+				
+				System.out.println(num10[y]); 
+				/*
 				System.out.println(num12[y]);
 				System.out.println(num16[y]);
 				System.out.println(fin_result_10); 
 				System.out.println(fin_result_12); 
 				System.out.println(fin_result_16); 
-			
+			*/
 			}
 			
 			y++;
@@ -44,21 +47,21 @@ public class study01 {
 
 	}
 	
-	//12Áø¹ý º¯È¯ ¸Þ¼­µå
+	//12ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½Þ¼ï¿½ï¿½ï¿½
 	public static String change(int value){
 		
 		String returnString = "";
-		int num,result,result_1 =0;
+		int num=0,result=0;
 
 		//System.out.println("2");
-		num = value % 12; // ³ª¸ÓÁö
-		result = value / 12; //¸ò
+		num = value % 12; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		result = value / 12; //ï¿½ï¿½
 		if(num == 11) {
-			returnString = result +"A";
+			returnString = result +"a";
 		}else if(num == 10){
-			returnString = result +"B";
+			returnString = result +"b";
 		}else {
-			//result_1 = result * 2; // 10Áø¼ö¿¡ »©ÁÖ¸é ³ª¿À´Â °ª
+			//result_1 = result * 2; // 10ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 			returnString = result + Integer.toString(num);
 		}
 			
@@ -68,44 +71,51 @@ public class study01 {
 	}
 	
 	
-	//¹è¿­ ÂÉ°³¼­ ´õÇÏ±â ¹Ì¿Ï¼º 
+	//ï¿½è¿­ ï¿½É°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½Ì¿Ï¼ï¿½ 
 	public static int new_arr(String value) {
-		int sum = 0;
+		int sum = 0,num_t= 0;
+		char[] array_word = new char[value.length()];
 		char re_sum;
-		for (int i = 0; i < value.length(); i++) {
-			re_sum = value.charAt(i);
-			
-			switch (re_sum) {
-            case 'A': re_sum = 10;
-            		  sum += re_sum;
-                     break;
-            case 'B': re_sum = 11;
-            		  sum += re_sum;
-                     break;
-            case 'C':  re_sum = 12;
-  		               sum += re_sum;
-                     break;
-            case 'D':  re_sum = 13;
-              	       sum += re_sum;
-                     break;
-            case 'E': re_sum = 14;
-                      sum += re_sum;
-                     break;
-            case 'F': re_sum = 15;
-                      sum += re_sum;
-                     break;
-            default:  sum += re_sum;
-                     break; 
-			
-			}
-			
-			
-			
-		      
-		      
-		    }
-
+		for (int i = 0; i < array_word.length; i++) {
+			array_word[i] = (value.charAt(i));
+   }
 		
+		
+		
+		for (int i =0; i < array_word.length; i++ ) {
+			re_sum = array_word[i];
+			
+			
+			if(re_sum == 'a') {
+				num_t = 10;
+				
+			}else if(re_sum == 'b') {
+				num_t = 11;
+
+				
+			}else if(re_sum == 'c') {
+				num_t = 12;
+
+				
+			}else if(re_sum == 'd') {
+				num_t = 13;
+
+				
+			}else if(re_sum == 'e') {
+				num_t = 14;
+
+				
+			}else if(re_sum == 'f') {
+				num_t = 15;
+
+				
+			}else {
+				num_t = (int)re_sum - 48 ;
+				
+			}
+			//System.out.println(num_t); 
+			sum += num_t;
+		}
 		
 		return sum;
 		
@@ -121,11 +131,14 @@ public class study01 {
 }
 
 /*
-½Ì±âÇÑ ³×ÀÚ¸® ¼ýÀÚ¶õ, [1000,9999]ÀÎ 10Áø¼ö ¼ýÀÚÁß¿¡¼­,  ´ÙÀ½ÀÇ Á¶°ÇÀ» ¸¸Á·ÇÏ´Â ¼ýÀÚ¸¦ ¸»ÇÑ´Ù.
-
-¼ýÀÚ¸¦ 10Áø¼ö, 12Áø¼ö, 16Áø¼ö·Î ³ªÅ¸³½ ´ÙÀ½, °¢°¢ÀÇ ¼ýÀÚ¿¡ ´ëÇØ, °¢ ¼ýÀÚÀÇ ÀÚ¸®¼ö¸¦ ´õÇßÀ» ¶§, ¼¼ °ªÀÌ ¸ðµÎ °°¾Æ¾ß ÇÑ´Ù.
-¿©·¯ºÐÀº ½Ì±âÇÑ ³×ÀÚ¸® ¼ýÀÚ¸¦ ¸ðµÎ Ãâ·ÂÇØ¾ß ÇÑ´Ù.
-
+2992
+2993
+2994
+2995
+2996
+2997
+2998
+2999
 */
 
 
