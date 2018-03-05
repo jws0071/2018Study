@@ -17,11 +17,7 @@ public class study01 {
 			}
 			y++;
 		}
-		
-		
-		
-		//System.out.println(result12);
-		
+
 
 	}
 	public static int sum_arr(String value) {
