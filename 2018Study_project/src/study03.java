@@ -48,6 +48,7 @@ public class study03 {
 		
 	
 		
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);  
 		
 		int num = sc.nextInt();
