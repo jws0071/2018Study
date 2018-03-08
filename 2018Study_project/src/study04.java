@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /*
  * 문제
 유진이가 즐겨하는 디제이맥스 게임은 각각의 노래마다 랭킹 리스트가 있다. 이것은 매번 게임할 때 마다 얻는 점수가 비오름차순으로 저장되 있는 것이다.
@@ -31,4 +33,80 @@ http://hahahoho5915.tistory.com/9
  */
 public class study04 {
 
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);  
+		
+		int num = sc.nextInt();
+		int[] line2 = new int[num];
+		int[] line2_result = new int[num];
+		int you_point = sc.nextInt();
+		int num_1 = sc.nextInt();
+
+		int k = 1;
+		
+	
+		for(int i=0; i<line2.length;i++) {
+			line2[i] = sc.nextInt();
+		}
+		sc.close();
+		
+		line2_result  = sort(line2, 0, line2.length - 1);
+		
+    for(int i=0; i<line2_result.length; i++) {
+    	
+    	if(line2_result[i] <= you_point ) {
+    		
+    		break;
+    	}else {
+    		k++;
+    	}
+    	
+    	
+    	
+    }
+    if(k >= num_1) {
+    	System.out.println("-1");
+    	
+    }else {
+    	 System.out.println(k);
+    }
+    
+   
+
+	}
+	
+	public static int[] sort(int[] data, int l, int r){
+    int left = l;
+    int right = r;
+    int pivot = data[(l+r)/2];
+    int num = data.length;
+    int[] data_result = new int[num];
+    
+    do{
+        while(data[left] < pivot) left++;
+        while(data[right] > pivot) right--;
+        if(left <= right){    
+            int temp = data[left];
+            data[left] = data[right];
+            data[right] = temp;
+            left++;
+            right--;
+        }
+    }while (left <= right);
+    
+    if(l < right) sort(data, l, right);
+    if(r > left) sort(data, left, r);
+    
+    for(int i=0; i<data.length;i++) {
+    	
+    	data_result[i] = data[num-1];
+    	num--;
+    	
+    }
+    return data_result;
+	}
+
+	
+	
 }

@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 /*
  * 
  *    수 정렬하기
@@ -44,11 +45,7 @@ public class study03 {
 	
 
 	public static void main(String[] args) {
-		
-		
-	
-		
-		@SuppressWarnings("resource")
+
 		Scanner sc = new Scanner(System.in);  
 		
 		int num = sc.nextInt();
@@ -56,49 +53,48 @@ public class study03 {
 		int[] arr_num_re = new int[num];
 	 //System.out.println(arr_num.length);
 		for (int i=0; i<arr_num.length; i++) {
-			//System.out.println("test");
-			int num_1 = sc.nextInt();
-			arr_num[i] = num_1;
-			if(i == arr_num.length-1) {
-
-				sc.close();
-				arr_num_re=ArrayPrint(arr_num);
-				
-				
-				for(int y=0;y<arr_num_re.length; y++) {
-					System.out.println(arr_num_re[y]);
-				}
-				
-				
-				//System.out.println("test");
-				
-			}
+			arr_num[i] = sc.nextInt();
 			
 		}
+		sc.close();
+
+			
+			//arr_num_re=ArrayPrint(arr_num);
+			study03 quick = new study03();
+      quick.sort(arr_num, 0, arr_num.length - 1);
+			//arr_num_re=sort(arr_num, 0, arr_num.length - 1);
+			
+			for(int y=0;y<arr_num.length; y++) {
+				System.out.println(arr_num[y]);
+			}
+			
+			
+			//System.out.println("test");
+			
+		
 		
 	}
-	public static int[] ArrayPrint(int[] arr_num)	{
-		int j = 0;
-		 do{
-			 j = 0;
-			for(int x=0;x<arr_num.length; x++) {
-			//System.out.println(j);
-				if(x < arr_num.length-1) {
-					if(arr_num[x] > arr_num[x+1]) {
-					  //System.out.println(arr_num[x]);
-						
-						int temp = 0;
-						temp = arr_num[x+1];
-						arr_num[x+1] = arr_num[x];
-						arr_num[x] = temp;
-						j++;
-					}
-				}
-			}		
-		}while(j != 0);
-	 return arr_num;
-	}
-
-
+	public void sort(int[] data, int l, int r){
+    int left = l;
+    int right = r;
+    int pivot = data[(l+r)/2];
+    
+    do{
+        while(data[left] < pivot) left++;
+        while(data[right] > pivot) right--;
+        if(left <= right){    
+            int temp = data[left];
+            data[left] = data[right];
+            data[right] = temp;
+            left++;
+            right--;
+        }
+    }while (left <= right);
+    
+    if(l < right) sort(data, l, right);
+    if(r > left) sort(data, left, r);
+}
+	
+	
 
 }
