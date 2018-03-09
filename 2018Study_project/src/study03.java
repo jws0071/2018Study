@@ -63,7 +63,7 @@ public class study03 {
 			study03 quick = new study03();
       quick.sort(arr_num, 0, arr_num.length - 1);
 			//arr_num_re=sort(arr_num, 0, arr_num.length - 1);
-			
+      System.out.println("+++++++");
 			for(int y=0;y<arr_num.length; y++) {
 				System.out.println(arr_num[y]);
 			}
@@ -74,6 +74,8 @@ public class study03 {
 		
 		
 	}
+	
+	
 	public void sort(int[] data, int l, int r){
     int left = l;
     int right = r;
@@ -82,18 +84,29 @@ public class study03 {
     do{
         while(data[left] < pivot) left++;
         while(data[right] > pivot) right--;
-        if(left <= right){    
+        if(left < right){    
             int temp = data[left];
             data[left] = data[right];
             data[right] = temp;
             left++;
             right--;
+
+
+            
+        }else if(left == right) {
+        	System.out.println("test");
         }
-    }while (left <= right);
+        
+        
+        System.out.println(left);
+        System.out.println(right);
+    }while (left > right);
     
-    if(l < right) sort(data, l, right);
-    if(r > left) sort(data, left, r);
+
 }
+	
+
+
 	
 	
 

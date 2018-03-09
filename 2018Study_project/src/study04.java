@@ -65,7 +65,7 @@ public class study04 {
     	
     	
     }
-    if(k >= num_1) {
+    if(k == num_1) {
     	System.out.println("-1");
     	
     }else {
