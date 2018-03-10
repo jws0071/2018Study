@@ -1,4 +1,4 @@
-import java.util.Scanner;
+
 
 /*
  * 문제
@@ -31,6 +31,9 @@ import java.util.Scanner;
 
 http://hahahoho5915.tistory.com/9
  */
+
+import java.util.Scanner;
+
 public class study04 {
 
 	public static void main(String[] args) {
@@ -50,8 +53,17 @@ public class study04 {
 			line2[i] = sc.nextInt();
 		}
 		sc.close();
+		study04 quick = new study04();
+        quick.sort(line2, 0, line2.length - 1);
 		
-		line2_result  = sort(line2, 0, line2.length - 1);
+		
+	    for(int i=0; i<line2.length;i++) {
+	    	
+	    	line2_result[i] = line2[num-1];
+	    	num--;
+	    	
+	    }
+		
 		
     for(int i=0; i<line2_result.length; i++) {
     	
@@ -65,7 +77,7 @@ public class study04 {
     	
     	
     }
-    if(k == num_1) {
+    if(k >= num_1) {
     	System.out.println("-1");
     	
     }else {
@@ -76,37 +88,51 @@ public class study04 {
 
 	}
 	
-	public static int[] sort(int[] data, int l, int r){
-    int left = l;
-    int right = r;
-    int pivot = data[(l+r)/2];
-    int num = data.length;
-    int[] data_result = new int[num];
-    
-    do{
-        while(data[left] < pivot) left++;
-        while(data[right] > pivot) right--;
-        if(left <= right){    
-            int temp = data[left];
-            data[left] = data[right];
-            data[right] = temp;
-            left++;
-            right--;
+	public void sort(int[] arr, int left, int right) {
+		 
+         if (left >= right) {
+        	 
+            return;
         }
-    }while (left <= right);
-    
-    if(l < right) sort(data, l, right);
-    if(r > left) sort(data, left, r);
-    
-    for(int i=0; i<data.length;i++) {
-    	
-    	data_result[i] = data[num-1];
-    	num--;
-    	
+
+ 
+        int lowIdx = left + 1;
+        int highIdx = right;
+        int pivot = arr[left];
+
+        while (lowIdx <= highIdx) {
+        
+            while (lowIdx <= right && arr[lowIdx] <= pivot) { 	
+                lowIdx++;
+            }
+ 
+            while (left + 1 <= highIdx && pivot <= arr[highIdx]) {
+                highIdx--;
+            }
+ 
+            if (lowIdx <= highIdx) {
+                int temp = arr[lowIdx];
+                arr[lowIdx] = arr[highIdx];
+                arr[highIdx] = temp;
+            } else {
+                arr[left] = arr[highIdx]; // pivot이 자신의 자리를 찾아가는 과정
+                arr[highIdx] = pivot;
+            }
+            
+        }
+ 
+        sort(arr, left, highIdx - 1);
+        sort(arr, highIdx + 1, right);
     }
-    return data_result;
-	}
+
 
 	
 	
+	
+	
+	
 }
+
+
+
+
