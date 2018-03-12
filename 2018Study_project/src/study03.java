@@ -1,19 +1,121 @@
-import java.util.Scanner;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+
+public class study03 {
+	
+
+	public static void main(String[] args)throws Exception {
+
+		BufferedReader sc = new BufferedReader(new InputStreamReader(System.in));
+
+		int num = Integer.parseInt(sc.readLine());
+		
+		int[] arr_num = new int[num];
+
+		for (int i=0; i<arr_num.length; i++) {
+
+			arr_num[i] = Integer.parseInt(sc.readLine());
+			
+		}
+		sc.close();
+
+			study03 quick = new study03();
+            quick.sort(arr_num, 0, arr_num.length - 1);
+
+           BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));  // 속도 차이남 
+			
+            for(int y=0;y<arr_num.length; y++) {
+				bw.write(Integer.toString(arr_num[y])+"\n" );
+				
+			}
+
+		bw.close();
+		
+	}
+    public void printArray(int[] arr) {
+        for (int val : arr) {
+            System.out.print(val + " ");
+        }
+        System.out.println("");
+    }
+
+	
+	public void sort(int[] arr, int left, int right) {
+		 
+         if (left >= right) {
+        	 
+            return;
+        }
+
+ 
+        int lowIdx = left + 1;
+        int highIdx = right;
+        int pivot = arr[left];
+ 
+
+        printArray(arr);
+        while (lowIdx <= highIdx) {
+        
+            while (lowIdx <= right && arr[lowIdx] <= pivot) {
+            	
+            	System.out.println("pivot  " + pivot );
+            	System.out.println("arr[lowIdx]  " + arr[lowIdx] );
+            	
+            	System.out.println("test  " + lowIdx );
+            	System.out.println("++++++++++++++++++++++++++");
+            	
+            	
+                lowIdx++;
+            }
+ 
+            while (left + 1 <= highIdx && pivot <= arr[highIdx]) {
+            	System.out.println("pivot  " + pivot );
+            	System.out.println("arr[highIdx]  " + arr[highIdx] );
+            	
+            	System.out.println("test  " + highIdx );
+            	System.out.println("___________________________+");
+                highIdx--;
+            }
+            System.out.println("lowIdx  " + lowIdx );
+        	System.out.println("highIdx  " +highIdx );
+ 
+            if (lowIdx <= highIdx) {
+                int temp = arr[lowIdx];
+                arr[lowIdx] = arr[highIdx];
+                arr[highIdx] = temp;
+            } else {
+                System.out.println("left12  " + left );
+                System.out.println("highIdx12  " + highIdx );
+ 
+
+            	
+                arr[left] = arr[highIdx]; // pivot이 자신의 자리를 찾아가는 과정
+                arr[highIdx] = pivot;
+            }
+            
+        }
+        //printArray(arr);
+        System.out.println("left  " + left );
+        System.out.println("highIdx  " + highIdx );
+        System.out.println("right  " + right );
+
+    	
+ 
+        sort(arr, left, highIdx - 1);
+        sort(arr, highIdx + 1, right);
+    }
+
+
+	
+
+}
 
 
 /*
- * 
- *    수 정렬하기
-  
-문제
-N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.
-
-입력
-첫째 줄에 수의 개수 N(1 ≤ N ≤ 10,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 숫자가 주어진다. 이 수는 10,000보다 작거나 같은 자연수이다.
-
-출력
-첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.
-
 10
 5
 2
@@ -25,89 +127,4 @@ N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로�
 5
 1
 7
-
-
-1
-1
-2
-2
-3
-3
-4
-5
-5
-7
-
 */
-
-
-public class study03 {
-	
-
-	public static void main(String[] args) {
-
-		Scanner sc = new Scanner(System.in);  
-		
-		int num = sc.nextInt();
-		int[] arr_num = new int[num];
-		int[] arr_num_re = new int[num];
-	 //System.out.println(arr_num.length);
-		for (int i=0; i<arr_num.length; i++) {
-			arr_num[i] = sc.nextInt();
-			
-		}
-		sc.close();
-
-			
-			//arr_num_re=ArrayPrint(arr_num);
-			study03 quick = new study03();
-      quick.sort(arr_num, 0, arr_num.length - 1);
-			//arr_num_re=sort(arr_num, 0, arr_num.length - 1);
-      System.out.println("+++++++");
-			for(int y=0;y<arr_num.length; y++) {
-				System.out.println(arr_num[y]);
-			}
-			
-			
-			//System.out.println("test");
-			
-		
-		
-	}
-	
-	
-	public void sort(int[] data, int l, int r){
-    int left = l;
-    int right = r;
-    int pivot = data[(l+r)/2];
-    
-    do{
-        while(data[left] < pivot) left++;
-        while(data[right] > pivot) right--;
-        if(left < right){    
-            int temp = data[left];
-            data[left] = data[right];
-            data[right] = temp;
-            left++;
-            right--;
-
-
-            
-        }else if(left == right) {
-        	System.out.println("test");
-        }
-        
-        
-        System.out.println(left);
-        System.out.println(right);
-    }while (left > right);
-    
-
-}
-	
-
-
-	
-	
-
-}
