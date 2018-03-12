@@ -1,4 +1,4 @@
 
 public class study05 {
- /*12*/
+ /*12123123*/
 }
