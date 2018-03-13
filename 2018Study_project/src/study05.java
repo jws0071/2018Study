@@ -77,13 +77,31 @@
 	      study05 qu = new study05();
 
 	      
+	      System.out.println(arr[lo]);
+	      System.out.println(lt);
 	      
-	       while (arr[lo] <= lt) {           	
-	      	 lo++;
+	      
+	       while (arr[lo] <= lt) {
+	      	 if(arr.length < lo) {
+	      		 swap_f.swap(arr, left, right);
+	      	 }else {
+	      		 lo++;
+	      	 }
           }
+	       printArray(arr);
           while (ht <= arr[gt]) {
+          	/*
+ 	      	 if(0 == gt) {
+	      		 swap_f.swap(arr, left, right);
+	      	 }else {
+	      		 gt--;
+	      	 }*/
           	gt--;
           }
+          
+          
+          
+          
           if (arr[lo] > lt) {
           	lo = lo - 1;
           	swap_f.swap(arr, left, lo);
@@ -92,6 +110,7 @@
 	        	gt = gt + 1;
 	        	swap_f.swap(arr, right, gt);
 	        } 
+	        printArray(arr);
 	        qu.quick(arr, left, lo-1);
 	        qu.quick(arr, lo+1, gt-1);
 	        qu.quick(arr, gt+1, right);
@@ -116,7 +135,7 @@
 	        
 	        
         
-	        //printArray(arr);
+	        
 	        while (lowIdx <= highIdx) {
 	  	        while (lowIdx <= right && arr[lowIdx] <= pivot) {           	
 	            	
@@ -168,7 +187,7 @@
 			
 			
 }
-/*
+/*   100 20 30 10 -10 0 1 3 2 5
 11
 50
 30
