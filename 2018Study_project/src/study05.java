@@ -3,6 +3,7 @@
 	import java.io.BufferedWriter;
 	import java.io.InputStreamReader;
 	import java.io.OutputStreamWriter;
+	import java.util.StringTokenizer;
 
 
 	public class study05 {
@@ -11,16 +12,31 @@
 		public static void main(String[] args)throws Exception {
 
 			BufferedReader sc = new BufferedReader(new InputStreamReader(System.in));
+			StringTokenizer st = null;
+			StringTokenizer st_1 = null;
+			
+			int[] st_arr = new int[2];
+			
+			st = new StringTokenizer(sc.readLine());
+			
+			for(int x=0; x<=1; x++) {
+				st_arr[x] = Integer.parseInt(st.nextToken());
+			}
+			
+			int num = st_arr[0];
+			int score = st_arr[1];
+			int result = 1;
 
-			int num = Integer.parseInt(sc.readLine());
 			
 			int[] arr_num = new int[num];
-
+				
+			st_1 = new StringTokenizer(sc.readLine());
 			for (int i=0; i<arr_num.length; i++) {
 
-				arr_num[i] = Integer.parseInt(sc.readLine());
+				arr_num[i] = Integer.parseInt(st_1.nextToken());
 				
 			}
+
 			sc.close();
 
 				study05 quick = new study05();
@@ -30,12 +46,18 @@
 
 	      BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));  // 속도 차이남 
 				
-	            for(int y=0;y<arr_num.length; y++) {
-					bw.write(Integer.toString(arr_num[y])+"\n" );
+	      for(int y=0;y<arr_num.length; y++) {
+	      	bw.write(Integer.toString(arr_num[y])+"\n" );
+	      	if(arr_num[y] == score) {
+	      		bw.write(Integer.toString(result)+"\n" );
+	      	}else {
+	      		result ++;
+	      	}
+					
 					
 				}
 
-			bw.close();
+	      bw.close();
 			
 		}
 	    public void printArray(int[] arr) {
@@ -47,25 +69,56 @@
 
 		
 		public void sort(int[] arr, int left, int right) {
-					study05 swap_f = new study05();
-			    swap_f.swap(arr, 0, arr.length - 1);
+			 	int lo = left + 1;
+	      int gt = right - 1;
+	      int lt = arr[left];
+	      int ht = arr[right];
+	      study05 swap_f = new study05();
+	      study05 qu = new study05();
 
-			    /*
-			    
-	         if (left >= right) {
-	        	 
-	            return;
-	        }
+	      
+	      
+	       while (arr[lo] <= lt) {           	
+	      	 lo++;
+          }
+          while (ht <= arr[gt]) {
+          	gt--;
+          }
+          if (arr[lo] > lt) {
+          	lo = lo - 1;
+          	swap_f.swap(arr, left, lo);
+	        } 
+	        if (arr[gt] < ht) {
+	        	gt = gt + 1;
+	        	swap_f.swap(arr, right, gt);
+	        } 
+	        qu.quick(arr, left, lo-1);
+	        qu.quick(arr, lo+1, gt-1);
+	        qu.quick(arr, gt+1, right);
 
-	 
+	        
+	       
+	        
+		}
+
+	    public void quick(int[] arr, int left, int right) { 
+
+        
+        if (left >= right) {
+       	 
+          return;
+      }
+        
+
 	        int lowIdx = left + 1;
 	        int highIdx = right;
 	        int pivot = arr[left];
-	 
-
-	        printArray(arr);
+	        
+	        
+        
+	        //printArray(arr);
 	        while (lowIdx <= highIdx) {
-	  	            while (lowIdx <= right && arr[lowIdx] <= pivot) {           	
+	  	        while (lowIdx <= right && arr[lowIdx] <= pivot) {           	
 	            	
 	                lowIdx++;
 	            }
@@ -88,51 +141,33 @@
 					
 	        
 	        
-	        
+	        /*
 	        
 	        sort(arr, left, highIdx - 1);
 	        sort(arr, highIdx + 1, right);
-	        sort(arr, highIdx + 1, right);*/
+	        
+	        quick(arr, left, lowIdx-1);
+	        quick(arr, lowIdx+1, highIdx-1);
+	        quick(arr, highIdx+1, right);
+
+	        */
+	        sort(arr, left, right);
+	        
+
 	    }
-		
-		public void swap(int[] arr, int left, int right) {
-			 
-      int lowIdx = left + 1;
-      int highIdx = right - 1;
-      int first_pivot = arr[left];
-      int last_pivot = arr[right];
- 
-	       while (arr[lowIdx] <= first_pivot) {           	
-          	  lowIdx++;
-              
-          }
 
-          while (last_pivot <= arr[highIdx]) {
-              highIdx--;
-          }
-          
-
-          if (arr[lowIdx] > first_pivot) {
-              int temp = arr[lowIdx-1];
-              arr[lowIdx-1] = arr[left];
-              arr[left] = temp;
-          } 
-          if (arr[highIdx] < last_pivot) {
-            int temp = arr[highIdx+1];
-            arr[highIdx+1] = arr[right];
-            arr[right] = temp;
-        } 
-          
-          
-          
-      }
+		public void swap(int[] arr, int pi, int Idx) {
+    int temp = arr[Idx];
+    arr[Idx] = arr[pi];
+    arr[pi] = temp;
+    }
 
       
 
 			
 			
 			
-		}
+}
 /*
 11
 50
