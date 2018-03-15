@@ -47,9 +47,9 @@
 	      BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));  // 속도 차이남 
 				
 	      for(int y=0;y<arr_num.length; y++) {
-	      	bw.write(Integer.toString(arr_num[y])+"\n" );
+	      	//bw.write(Integer.toString(arr_num[y])+"\n" );
 	      	if(arr_num[y] == score) {
-	      		bw.write(Integer.toString(result)+"\n" );
+	      		//bw.write(Integer.toString(result)+"\n" );
 	      	}else {
 	      		result ++;
 	      	}
@@ -79,37 +79,44 @@
 	      
 	      System.out.println(arr[lo]);
 	      System.out.println(lt);
+	      printArray(arr);
 	      
-	      
-	       while (arr[lo] <= lt) {
-	      	 if(arr.length < lo) {
-	      		 swap_f.swap(arr, left, right);
-	      	 }else {
+	       while (arr[lo] <= lt ) {
+
 	      		 lo++;
-	      	 }
+	      		 if(arr.length == lo) { 
+	      			 --lo; 
+	      			 break;
+	      			 }
           }
-	       printArray(arr);
+		      System.out.println("1="+arr[lo]);
+		      System.out.println("2="+lt);
+	      
           while (ht <= arr[gt]) {
-          	/*
- 	      	 if(0 == gt) {
-	      		 swap_f.swap(arr, left, right);
-	      	 }else {
-	      		 gt--;
-	      	 }*/
           	gt--;
           }
-          
-          
+          //System.out.println(gt);
+          //printArray(arr);
           
           
           if (arr[lo] > lt) {
           	lo = lo - 1;
           	swap_f.swap(arr, left, lo);
-	        } 
-	        if (arr[gt] < ht) {
+	        }else {
+	        	swap_f.swap(arr, left, lo);
+	        	
+	        }
+          //System.out.println(arr[gt]);
+         // System.out.println(ht);
+          //printArray(arr);
+          if(arr[gt] < ht) {
 	        	gt = gt + 1;
 	        	swap_f.swap(arr, right, gt);
-	        } 
+	        	
+	        }else{
+	        	swap_f.swap(arr, right, gt);
+	        }
+	        System.out.println("Start");
 	        printArray(arr);
 	        qu.quick(arr, left, lo-1);
 	        qu.quick(arr, lo+1, gt-1);
@@ -157,7 +164,7 @@
 	            }
 	            
 	        }
-					
+	        printArray(arr);
 	        
 	        
 	        /*
@@ -170,6 +177,8 @@
 	        quick(arr, highIdx+1, right);
 
 	        */
+	        System.out.println("left" +left);
+	        System.out.println("right" +right);
 	        sort(arr, left, right);
 	        
 
