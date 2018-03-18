@@ -97,7 +97,7 @@
 	        qu.quick(arr, left, lo-1);
 
 	        
-	       
+	       /*12*/
 	        
 		}
 

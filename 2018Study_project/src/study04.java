@@ -46,7 +46,7 @@ public class study04 {
 		int you_point = sc.nextInt();
 		int num_1 = sc.nextInt();
 
-		int k = 1;
+		int k = 1, h=1;
 		
 	
 		for(int i=0; i<line2.length;i++) {
@@ -67,21 +67,30 @@ public class study04 {
 		
     for(int i=0; i<line2_result.length; i++) {
     	
-    	if(line2_result[i] <= you_point ) {
+    	if(line2_result[i] < you_point ) {
     		
     		break;
+    	}else if(line2_result[i] == you_point ) {
+    		h++;
+
     	}else {
     		k++;
     	}
     	
     	
     	
-    }
-    if(k >= num_1) {
-    	System.out.println("-1");
     	
+    }
+    
+    if(k >= num_1) {
+    	System.out.println(-1);
+    	
+    }else if(h + k > num_1   ) {
+    	 
+    	 System.out.println(-1);
     }else {
-    	 System.out.println(k);
+    	
+    	System.out.println(k);
     }
     
    
