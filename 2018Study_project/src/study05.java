@@ -97,7 +97,7 @@
 	        qu.quick(arr, left, lo-1);
 
 	        
-	       
+	       /*12*/
 	        
 		}
 
@@ -139,7 +139,7 @@
 	            
 	        }
 
-	        
+	        /*2333*/
 
 	        //sort(arr, left, right);
 	        
@@ -181,7 +181,7 @@
 		}
 
      
-/*
+/*4444
 		public static void main(String[] args)throws Exception {
 			
 		
