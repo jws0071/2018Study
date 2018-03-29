@@ -97,7 +97,7 @@
 	        qu.quick(arr, left, lo-1);
 
 	        
-	       
+	       /*12*/
 	        
 		}
 
@@ -181,7 +181,7 @@
 		}
 
      
-/*
+/*4444
 		public static void main(String[] args)throws Exception {
 			
 		

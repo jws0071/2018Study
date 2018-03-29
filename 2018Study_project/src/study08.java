@@ -113,7 +113,7 @@ public class study08 {
     }
   }
   
-	public static ArrayList<Integer> pop(int[] insert_num, int num ) {
+	public static int[] pop(int[] insert_num, int num ) {
 		int i = 0;
 		ArrayList<Integer> list = new ArrayList<Integer>();
 		for(int j=0; j<insert_num.length; j++) {
@@ -131,11 +131,11 @@ public class study08 {
 		
 		insert_num = null;
 		for(int x=0; x<list.size(); x++) {
-			insert_num[i]
+			insert_num[i] = list.get(i);
 					
 		}
 		
-		return list;
+		return insert_num;
 
 		
 	
