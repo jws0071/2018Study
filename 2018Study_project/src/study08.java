@@ -6,6 +6,7 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class study08 {
@@ -23,29 +24,19 @@ public class study08 {
 			
 		}
 		sc.close();
-
 		
-		/*
-    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));  // 속도 차이남 
-			
-    for(int y=0;y<arr_num.length; y++) {
-      //bw.write(Integer.toString(arr_num[y])+"\n" );
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));  // 속도 차이남 
+		
+    for(int y=0;y<result.length; y++) {
+      bw.write(Integer.toString(result[y])+"\n" );
 		}
 		bw.close();
 		
-	}
-	public void change(String[] arr) {
-		for(int i=0; i < arr.length; i++) {
-			
-			
-			
-		}
-		*/
-		
-		//+, -, *, /, (, )
-		
+
 		
 	}
+
+
 	
 	public static int main_f(BufferedReader sc) throws Exception {
 		
@@ -61,6 +52,7 @@ public class study08 {
 	
 		
 		int[] insert_num = new int[total_num[0]];
+		int[] result_num = new int[total_num[0]];
 		st_1 = new StringTokenizer(sc.readLine());
 		for (int i=0; i<insert_num.length; i++) {
 
@@ -70,27 +62,80 @@ public class study08 {
 		
 		int[] sort_arr = sort_data(insert_num);
 		reverseArrayInt(sort_arr);
+		result_num = result(sort_arr, insert_num, 0);
+		int result=result_num[total_num[1]];
+
 		
-		for(int i=0; i < sort_arr.length; i++) {
-			int num = sort_arr[i];
-			pop(insert_num, num);
-			
-			
-		}
-		
-		
-		
-		System.out.println(sort_arr[0]);	
-	
-		
-		
-		
-		return 0;
+		return result;
 		
 		
 	
 	}
 	
+	
+	// 역정렬된 값을 넣어서 비교
+	public static int[] result (int[] sort_arr, int[] insert_num, int index) throws Exception {
+		
+		if(index >= sort_arr.length) {
+
+		}else {
+		int num = sort_arr[index];
+		pop(sort_arr, insert_num, num, index);
+		}
+		return sort_arr;
+	}
+	
+
+  
+	public static void pop(int[] sort_arr, int[] insert_num, int num,int index ) throws Exception {
+		int i = index;
+
+		int[] insert_num_result = new int[insert_num.length];
+
+		ArrayList<Integer> list = new ArrayList<Integer>();
+
+		for(int temp : insert_num){
+			list.add(temp);
+		  //System.out.println(list.get(i).intValue());
+		}
+		
+
+		//System.out.println("num"+num);	
+		while(list.get(i).intValue() < num) {
+			if(list.get(i).intValue() == num) {
+				return;
+			}
+			//System.out.println(list.get(i).intValue());	
+			list.add(list.get(i).intValue());
+			//System.out.println("add"+list.get(i).intValue());	
+			list.remove(i);
+			//System.out.println("i"+i);	
+			
+			
+		}
+		
+		//System.out.println("start-1");	
+		for(int y=0; y<list.size(); y++) {
+			//insert_num_result[i] = list.get(y).intValue();
+		  //System.out.println(list.get(y).intValue());	
+		}
+		//System.out.println("end-1");
+	 
+		
+		for(int x=0; x<list.size(); x++) {
+			insert_num_result[x] = list.get(x).intValue();
+			//System.out.println(insert_num_result[x]);			
+		}
+		//System.out.println("end-2");
+		index++;
+		result(sort_arr, insert_num_result, index);
+		
+		
+	
+	}
+	
+	
+	// 들어 값 소팅
 	public static int[] sort_data(int[] insert_num ) {
 		int[] sort_arr = new int[insert_num.length];
 		for (int i=0; i<sort_arr.length; i++) {
@@ -102,7 +147,7 @@ public class study08 {
 		
 	
 	}
-	
+  //소팅값 역소팅
   public static void reverseArrayInt(int[] array) {
     int temp;
 
@@ -112,34 +157,6 @@ public class study08 {
       array[(array.length - 1) - i] = temp;
     }
   }
-  
-	public static ArrayList<Integer> pop(int[] insert_num, int num ) {
-		int i = 0;
-		ArrayList<Integer> list = new ArrayList<Integer>();
-		for(int j=0; j<insert_num.length; j++) {
-			list.add(insert_num[i]);
-		}
-		
-		
-		int last_index = list.size();
-		while(list.get(i) >= num) {
-			list.add(last_index+1,list.get(i));
-			
-			last_index++;
-			i++;
-		}
-		
-		insert_num = null;
-		for(int x=0; x<list.size(); x++) {
-			insert_num[i]
-					
-		}
-		
-		return list;
-
-		
-	
-	}
   
   
 	
