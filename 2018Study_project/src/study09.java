@@ -17,8 +17,8 @@ public class study09 {
 		
 	
 		
-		int[] st_arr = new int[cnt];
-		int[] st_arr_result = new int[cnt];
+		int[] st_arr = new int[cnt+1];
+		int[] st_arr_result = new int[cnt+1];
 		StringTokenizer st = null;
 		st = new StringTokenizer(sc.readLine());
 		int temp = 0;
@@ -28,20 +28,27 @@ public class study09 {
 		}
 		sc.close();
 		
-		for(int i =0; i<=st_arr.length; i++) {
+		for(int i =1; i<=cnt; i++) {
 			st_arr_result[i] = st_arr[i];
-			for(int j=0; j<=i;j++)
-			
-		}
-		
-		
-		for(int j=0; j <st_arr_result.length;  j++) {
-			
-			System.out.println(st_arr_result[j]);		
+			for(int j=1; j<i;j++) {
+				if(st_arr[j] < st_arr[i] && st_arr_result[i] < st_arr_result[j]+st_arr[i]) {
+					st_arr_result[i] = st_arr_result[j] + st_arr[i];
+					
+				}
+				
+			}
+			if(temp<st_arr_result[i]) {
+				temp = st_arr_result[i];
+			}
 				
 			
+			
 		}
-		Arrays.sort(st_arr_result);
+
+		System.out.println(temp+st_arr[0]);	
+				
+			
+		//Arrays.sort(st_arr_result);
 
 		//System.out.println(st_arr_result[st_arr_result.length-1]);
 		
