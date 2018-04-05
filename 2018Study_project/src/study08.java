@@ -158,8 +158,7 @@ public class study08 {
     }
   }
   
-<<<<<<< HEAD
-=======
+
 	public static int[] pop(int[] insert_num, int num ) {
 		int i = 0;
 		ArrayList<Integer> list = new ArrayList<Integer>();
@@ -187,8 +186,6 @@ public class study08 {
 		
 	
 	}
-  
->>>>>>> ff6e4995e0a97e64fe4664a8e557e1bccb182413
   
 	
 }

@@ -21,29 +21,36 @@ public class study09 {
 		int[] st_arr_result = new int[cnt];
 		StringTokenizer st = null;
 		st = new StringTokenizer(sc.readLine());
-		int temp = 0;
+
 		for(int x=0; x < cnt; x++) {
 			st_arr[x] = Integer.parseInt(st.nextToken());
 			
 		}
 		sc.close();
-		
-		for(int i =0; i<=st_arr.length; i++) {
-			st_arr_result[i] = st_arr[i];
-			for(int j=0; j<=i;j++)
-			
-		}
-		
-		
-		for(int j=0; j <st_arr_result.length;  j++) {
-			
-			System.out.println(st_arr_result[j]);		
-				
-			
-		}
-		Arrays.sort(st_arr_result);
+ 
+        for (int i = 0; i < cnt; i++) {
+            st_arr_result[i] = st_arr[i];
+ 
+            for (int j = 0; j < i; j++) {
+                if (st_arr[j] < st_arr[i] && st_arr_result[i] < st_arr_result[j] +st_arr[i]) {
+ 
+                	st_arr_result[i] = st_arr_result[j] + st_arr[i];
+ 
+                }
+            }
+ 
+ 
+        }
+        
+        int max = st_arr_result[0];
+        
+        for(int i = 0; i < cnt; i++) {
+            if(max < st_arr_result[i]) {
+                max = st_arr_result[i];
+            }
+        }
 
-		//System.out.println(st_arr_result[st_arr_result.length-1]);
+		System.out.println(max);
 		
 	}
 	
