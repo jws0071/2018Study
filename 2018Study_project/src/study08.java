@@ -158,6 +158,37 @@ public class study08 {
     }
   }
   
+<<<<<<< HEAD
+=======
+	public static int[] pop(int[] insert_num, int num ) {
+		int i = 0;
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for(int j=0; j<insert_num.length; j++) {
+			list.add(insert_num[i]);
+		}
+		
+		
+		int last_index = list.size();
+		while(list.get(i) >= num) {
+			list.add(last_index+1,list.get(i));
+			
+			last_index++;
+			i++;
+		}
+		
+		insert_num = null;
+		for(int x=0; x<list.size(); x++) {
+			insert_num[i] = list.get(i);
+					
+		}
+		
+		return insert_num;
+
+		
+	
+	}
+  
+>>>>>>> ff6e4995e0a97e64fe4664a8e557e1bccb182413
   
 	
 }
