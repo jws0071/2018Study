@@ -11,8 +11,8 @@ public class study11_1992 {
 	
 	   BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	    StringTokenizer st = null;
-	    int index_x =1;
-	    int index_y =1;
+	    int index_x =0;
+	    int index_y =0;
 	    int cnt_x = Integer.parseInt(br.readLine());
 	    int cnt_y =cnt_x;
 	    char[] low = null;
@@ -42,36 +42,45 @@ public class study11_1992 {
 		int x =0;
 		int y =0;
 		int sum=0;
-		System.out.print("index_x "+index_x+"\n");
-		System.out.print("index_y "+index_y+"\n");
-		System.out.print("cnt_x "+cnt_x +"\n");
-		System.out.print("cnt_y "+cnt_y+"\n");
-		for(x=index_x; x <= cnt_x; x++) {
-			for(y=index_y; y<=cnt_y; y++) {
+		//System.out.print("index_x "+index_x+"\n");
+		//System.out.print("index_y "+index_y+"\n");
+		//System.out.print("cnt_x "+cnt_x +"\n");
+		//System.out.print("cnt_y "+cnt_y+"\n");
+		for(x=index_x; x < cnt_x; x++) {
+			for(y=index_y; y< cnt_y; y++) {
 				temp += a[x][y];	
 			}
 			sum++;
 		}
 		
-		System.out.print("sum "+sum+"\n");
+		//System.out.print("sum "+sum+"\n");
 		if(temp == sum*sum ) {
-			System.out.print("test=1"+"\n");
+			//System.out.print("test=1"+"\n");
 			list.add("1");
 			return;
 		}else if(temp == 0){
-			System.out.print("test=2"+"\n");
+			//System.out.print("test=2"+"\n");
 			list.add("0");
 			return;
 		}
-		else if(temp !=0  && temp < sum*sum  && sum>1) {
+		else if(temp !=0  && temp < sum*sum  && sum>2) {
+			//System.out.print("test3");
 			list.add("(");
 			shard(a,index_x,cnt_x/2,index_y,cnt_y/2);
-		  
 		  shard(a,index_x,cnt_x/2,cnt_y/2,cnt_y );
-			//shard(a,cnt_x/2,cnt_x,index_y,cnt_y/2);
-			//shard(a,cnt_x/2,cnt_x,cnt_y/2,cnt_y);
+			shard(a,cnt_x/2,cnt_x,index_y,cnt_y/2);
+			shard(a,cnt_x/2,cnt_x,cnt_y/2,cnt_y);
 			list.add(")");
-	}
+	}	else if(sum<=2) {
+		//System.out.print("test4");
+		list.add("(");
+
+		list.add( Integer.toString(a[index_x][index_y]));
+		list.add( Integer.toString(a[index_x][index_y+1]));
+		list.add( Integer.toString(a[index_x+1][index_y]));
+		list.add( Integer.toString(a[index_x+1][index_y+1]));
+		list.add(")");
+}
 	
 }
 }
