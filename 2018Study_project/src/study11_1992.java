@@ -67,7 +67,7 @@ public class study11_1992 {
 			//System.out.print("test3");
 			list.add("(");
 			shard(a,index_x,cnt_x/2,index_y,cnt_y/2);
-		  shard(a,index_x,cnt_x/2,cnt_y/2,cnt_y );
+		    shard(a,index_x,cnt_x/2,cnt_y/2,cnt_y );
 			shard(a,cnt_x/2,cnt_x,index_y,cnt_y/2);
 			shard(a,cnt_x/2,cnt_x,cnt_y/2,cnt_y);
 			list.add(")");
