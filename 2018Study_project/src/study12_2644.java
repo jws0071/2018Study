@@ -27,6 +27,7 @@ public class study12_2644 {
             arr[i][1] = sc.nextInt();
         }
         System.out.println(BFS(x, N));
+        sc.close();
     }
  
     public static int BFS(int x, int N) {
