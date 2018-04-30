@@ -44,6 +44,7 @@
         if (impossible(i,x,y)) {
         	  main_pan[x][y] = i;
             temp();
+            main_pan[x][y] = 0;
         }
     }
 			
