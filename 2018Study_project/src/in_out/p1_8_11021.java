@@ -3,7 +3,7 @@ package in_out;
 
 import java.util.Scanner;
 
-public class p1_4_10950 {
+public class p1_8_11021 {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);  
@@ -20,22 +20,9 @@ public class p1_4_10950 {
 		sc.close();
 		for(int i =0 ; i<a; i++) {
 		
-			System.out.println(result[i]);	
+			System.out.println("Case #"+(i+1)+": "+result[i]);	
 		}		
 		
 
 	}
 }
-
-
-/*
-
-
-5
-1 1
-2 3
-3 4
-9 8
-5 2
-
-*/
