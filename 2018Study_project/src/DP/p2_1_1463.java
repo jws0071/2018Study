@@ -5,79 +5,28 @@ import java.util.Scanner;
 public class p2_1_1463 {
 	public static void main(String[] args) {
 		
-		Scanner sc = new Scanner(System.in);  
-		int num = sc.nextInt();
-		
-
-		sc.close();
-
-		int result = 0;
-		while (num > 0 ) {
-			if(num % 3 == 0) {
-				num = num / 3;
-				result += 1;
-				System.out.println("t3");
-			}else if(num % 2 == 0) {
-				num = num / 2;
-				result += 1;
-				System.out.println("t2");
-			}else {
-				num = num -1;
-				result += 1;
-				System.out.println("t1");
-			}
-		}
-		System.out.println(result);
-
-
+    Scanner sc = new Scanner(System.in);
+    
+    int X = sc.nextInt();
+    
+    int[] min = new int[1000001]; // 10의 6승이 최대값이기 때문에
+    
+    min[1] = 0; // 계산하기 쉬우려고 배열은 0번부터 시작하지만 인위적으로 1부터 시작하는 것처럼 만듦.
+    
+    for(int i=2; i<X+1; i++){
+        min[i] = min[i-1] +1; // 3이나 2로 나누어지지 않으면 주어진 숫자의 1 작은 수에 대한 최소 연산횟수 + (-1) 연산을 한 횟수
+        
+        if(i%2 == 0 && min[i/2] + 1 < min[i]){
+            min[i] = min[i/2] + 1; // 2로 바로 나누어 지는 경우 최솟값 비교해서 작은 연산 횟수로 대입.
+        }
+        if(i%3 == 0 && min[i/3] + 1 < min[i]){
+            min[i] = min[i/3] + 1; // 3으로 바로 나누어질 때, 대입된 값에 대한 비교가 이뤄지므로 모든 경우에 대한 비교가 성립.
+                                    // (-1) 연산이 이뤄진 횟수와 2로 바로 나누었을 때에 대한 최종 값이 마지막 min[i]에 들어오기 때문이다.
+        }
+        
+    }
+    System.out.println(min[X]);
+    sc.close();
 	}
 }
 
-
-/*
-import java.util.Scanner;
-
- 
-
-class Main{
-
-    
-
-    public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-
-        int n;
-
-        n = sc.nextInt();
-
-        int dp[] = new int[n+1];
-
-        
-
-        for(int i=2;i<=n;i++){
-
-            dp[i] = dp[i-1]+1;
-
-            if(i%2==0 && dp[i]>dp[i/2]+1)
-
-                dp[i] = dp[i/2]+1;
-
-            if(i%3==0 && dp[i]>dp[i/3]+1)
-
-                dp[i] = dp[i/3]+1;
-
-        }
-
-        System.out.println(dp[n]);
-
-    }
-
-    public static int min(int a,int b){
-
-        return a>b?b:a;
-
-    }
-
-}
-*/
