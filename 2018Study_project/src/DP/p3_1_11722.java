@@ -1,7 +1,38 @@
 package DP;
+import java.util.Scanner;
 
+public class p3_1_11722 {
+  public static void main(String args[]){
+    Scanner scan = new Scanner(System.in);
+    int n = scan.nextInt();
+    int[] arr = new int[n];
+    int[] dp = new int[n];
+    for(int i = 0; i < n; i++){
+      arr[i] = scan.nextInt();
+    }
+    scan.close();
+    for(int i = 1; i < n; i++){
+      for(int j = 0; j < i; j++){
+        if(arr[i] < arr[j]){ // ---- 1
+          if(dp[j] + 1 > dp[i]){ // ---- 2
+            dp[i] = dp[j] + 1;
+          }
+        }
+      }
+    }
+
+    int max = dp[0];
+    for(int i = 1; i < n; i++){
+      if(max < dp[i]){
+        max = dp[i];
+      }
+    }
+
+    System.out.println(max + 1);
+  }
+}
 // 점화식을 구하지 못함
-
+/*
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -21,38 +52,37 @@ public class p3_1_11722 {
 		}
 		// arr_result 값이 증가함에 따라 변경  크면 종료 같으면 패스 작으면 카운트 
 		for(int j =1; j<=arr_cnt;j++) {
-			arr_check[j] = f(j, arr_cnt);
-
-
+			
+			arr_check[j] = f(arr_cnt,j);
+			//System.out.println("j" +j);
+			//System.out.println("arr_check[j]"+arr_check[j]);
 		}
 		
 		Arrays.sort(arr_check);
-		System.out.println(arr_check[1000]+1);
+		System.out.println(arr_check[1000]);
 		sc.close();
 	
 		
 	}
-	
-	
-	
-	public static int f(int j, int arr_cnt) {
-		int result = 1;
-		int post = arr_result[j];
-		for (int x = j+1; x<=arr_cnt;x++) {
+	public static int f(int arr_cnt, int j) {
+		int result = 0;  // 결과값
+		int index_point = arr_result[j];  // 이전 최대값
 		
-		 if(arr_result[j] > arr_result[x] && post > arr_result[x]) {
-			 		post = arr_result[x];
+		
+		for(int i=j;i>0;i--) {
+			
+			if(arr_result[i-1]>arr_result[j] && arr_result[i-1]>index_point) {  //  처음값보다 크면서  이전 최대값보다 큰값일때 체크
+				index_point=arr_result[i-1];  // 이전 최대값 저장을 위해서 
+				result += 1;
 
-			 		result += 1;
-			}else if(arr_result[j] < arr_result[x]) {
-				break;
 			}
 		}
-		
-		return result;
+		return result + 1; 
 	}
+
 }
 
+*/
 /*
 
 
@@ -78,37 +108,13 @@ public class p3_1_11722 {
 예제 출력 1 
 3
 
-
-public class Main {
-  public static void main(String args[]){
-    Scanner scan = new Scanner(System.in);
-    int n = scan.nextInt();
-    int[] arr = new int[n];
-    int[] dp = new int[n];
-    for(int i = 0; i < n; i++){
-      arr[i] = scan.nextInt();
-    }
-
-    for(int i = 1; i < n; i++){
+for(int i = 0; i < N; i++){
+      count[i] = 1;
       for(int j = 0; j < i; j++){
-        if(arr[i] < arr[j]){ // ---- 1
-          if(dp[j] + 1 > dp[i]){ // ---- 2
-            dp[i] = dp[j] + 1;
-          }
-        }
+        if(sequence[i] < sequence[j] && count[j]+1 > count[i])
+          count[i] = count[j] + 1;
       }
     }
-
-    int max = dp[0];
-    for(int i = 1; i < n; i++){
-      if(max < dp[i]){
-        max = dp[i];
-      }
-    }
-
-    System.out.println(max + 1);
-  }
-}
 
 
 */

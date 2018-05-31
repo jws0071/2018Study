@@ -1,7 +1,108 @@
 package DP;
 
-public class p3_2_11054 {
+import java.util.Scanner;
 
+public class p3_2_11054 {
+	 public static void main(String args[]){
+	    Scanner scan = new Scanner(System.in);
+	    int n = scan.nextInt();
+	    int[] arr = new int[n];
+	    int[] dp_max = new int[n];
+	    int[] dp_max_min = new int[n];
+	    int[] dp_min = new int[n];
+	    int[] dp_min_max = new int[n];
+	    for(int i = 0; i < n; i++){
+	      arr[i] = scan.nextInt();
+	    }
+	    
+	    scan.close();
+	    
+	    
+	    // 감소 수열로 계산
+	    int min_index =0;
+
+	    for(int i = 1; i < n; i++){
+	      for(int j = 0; j < i; j++){
+	        if(arr[i] < arr[j]){ // ---- 1
+	          if(dp_min[j] + 1 > dp_min[i]){ // ---- 2
+	          	dp_min[i] = dp_min[j] + 1;
+	          }
+	        }
+	      }
+	    }
+	    int min = dp_min[0];
+	    for(int i = 1; i < n; i++){
+	      if(min < dp_min[i]){
+	      	min_index = i;
+	      	min = dp_min[i];
+	      }
+	    }
+	    for(int i = min_index+1 ; i < n; i++){
+	      for(int j = min_index; j < i; j++){
+	        if(arr[i] > arr[j]){ // ---- 1
+	          if(dp_min_max[j] + 1 > dp_min_max[i]){ // ---- 2
+	          	dp_min_max[i] = dp_min_max[j] + 1;
+	          }
+	        }
+	      }
+	    }
+	    int min_max = dp_min_max[0];
+	    for(int i = 1; i < n; i++){
+	      if(min_max < dp_min_max[i]){
+
+	      	min_max = dp_min_max[i];
+	      }
+	    }
+	    
+	    
+	    // 증가 수열로 계산
+	    int max_index =0;
+	    for(int i = 1; i < n; i++){
+	      for(int j = 0; j < i; j++){
+	        if(arr[i] > arr[j]){ // ---- 1
+	          if(dp_max[j] + 1 > dp_max[i]){ // ---- 2
+	          	dp_max[i] = dp_max[j] + 1;
+	          }
+	        }
+	      }
+	    }
+	    
+	    
+	    int max = dp_max[0];
+	    for(int i = 1; i < n; i++){
+	      if(max < dp_max[i]){
+	      	max_index =i;
+	      	max = dp_max[i];
+	      }
+	    }
+	    for(int i = max_index+1; i < n; i++){
+	      for(int j = max_index; j < i; j++){
+	        if(arr[i] < arr[j]){ // ---- 1
+	          if(dp_max_min[j] + 1 > dp_max_min[i]){ // ---- 2
+	          	dp_max_min[i] = dp_max_min[j] + 1;
+	          }
+	        }
+	      }
+	    }
+	    int max_min = dp_max_min[0];
+	    for(int i = 1; i < n; i++){
+	      if(max_min < dp_max_min[i]){
+
+	      	max_min = dp_max_min[i];
+	      }
+	    }
+	    
+	    
+	    
+	    System.out.println(Math.max((min+min_max)+1, (max+max_min)+1));
+	    //System.out.println(min);
+	    //System.out.println(min_max);
+	    //System.out.println(max);
+	    //System.out.println(max_min);
+
+	 }
+	
+	 
 }
 /*
 가장 긴 바이토닉 부분 수열
