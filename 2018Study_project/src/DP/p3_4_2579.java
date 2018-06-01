@@ -1,9 +1,41 @@
 package DP;
+import java.util.Scanner;
 
+// 내용이해는 됨 http://nackwon.tistory.com/67
+public class p3_4_2579 {
+ 
+    static int[] list;
+    static int[][] result;
+ 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+ 
+        list = new int[n+1];
+        result = new int[n+1][2];
+        for (int i = 1; i <= n; i++) {
+            list[i] = sc.nextInt();
+ 
+        }
+        sc.close();
+        result[1][0] = result[1][1] = list[1];
+        for (int i = 2; i <= n; i++) {
+            result[i][0] = result[i - 1][1] + list[i];
+            result[i][1] = Math.max(result[i - 2][0], result[i - 2][1]) + list[i];
+            
+            //System.out.println(result[i][0]+ " "+ result[i][1]);
+        }
+ 
+        System.out.println(Math.max(result[n][0], result[n][1]));
+    }
+}
+
+
+/*
 import java.util.Scanner;
 
 public class p3_4_2579 {
-
+ 
  public static void main(String args[]){
    Scanner scan = new Scanner(System.in);
    int n = scan.nextInt();
@@ -21,12 +53,7 @@ public class p3_4_2579 {
   	 result_1 = arr[j+1]+arr[j+2]+result_1;
   	 result_2 = arr[j]+arr[j+2]+result_2;
   	 result_3 = arr[j]+arr[j+1]+result_3;
-  	 /*
-  	 System.out.println("j"+j+ ">>>>>>>>>>>>");
-  	 System.out.println("result_1"+result_1);
-  	 System.out.println("result_2"+result_2);
-  	 System.out.println("result_3"+result_3);
-  	 */
+
    }
    
    int last = (n-1)%3; // 마지막값 구분
@@ -43,7 +70,7 @@ public class p3_4_2579 {
  }
 
 }
-
+*/
 
 /*
 
