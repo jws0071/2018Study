@@ -1,7 +1,7 @@
 package DP;
 import java.util.Scanner;
 
-public class p3_1_11722 {
+public class p3_1_11722 {  // 가장 긴 감소하는 부분 수열
   public static void main(String args[]){
     Scanner scan = new Scanner(System.in);
     int n = scan.nextInt();
