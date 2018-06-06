@@ -6,11 +6,11 @@ public class p3_2_11054 {
 	 public static void main(String args[]){
 	    Scanner scan = new Scanner(System.in);
 	    int n = scan.nextInt();
-	    int[] arr = new int[n];
-	    int[] dp_max = new int[n];
-	    int[] dp_max_min = new int[n];
-	    int[] dp_min = new int[n];
-	    int[] dp_min_max = new int[n];
+	    int[] arr = new int[n+1];
+	    int[] dp_max = new int[n+1];
+	    int[] dp_max_min = new int[n+1];
+	    int[] dp_min = new int[n+1];
+	    int[] dp_min_max = new int[n+1];
 	    for(int i = 0; i < n; i++){
 	      arr[i] = scan.nextInt();
 	    }
@@ -37,7 +37,11 @@ public class p3_2_11054 {
 	      	min = dp_min[i];
 	      }
 	    }
-	    for(int i = min_index+1 ; i < n; i++){
+
+	    System.out.println(min_index);
+	    
+	    
+	    for(int i = min_index ; i <= n; i++){
 	      for(int j = min_index; j < i; j++){
 	        if(arr[i] > arr[j]){ // ---- 1
 	          if(dp_min_max[j] + 1 > dp_min_max[i]){ // ---- 2
@@ -75,8 +79,10 @@ public class p3_2_11054 {
 	      	max = dp_max[i];
 	      }
 	    }
-	    for(int i = max_index+1; i < n; i++){
-	      for(int j = max_index; j < i; j++){
+	   
+
+	    for(int i = 0; i < max_index+1; i++){
+	      for(int j = 0; j < i; j++){
 	        if(arr[i] < arr[j]){ // ---- 1
 	          if(dp_max_min[j] + 1 > dp_max_min[i]){ // ---- 2
 	          	dp_max_min[i] = dp_max_min[j] + 1;
@@ -92,10 +98,11 @@ public class p3_2_11054 {
 	      }
 	    }
 	    
-	    
-	    
+	    System.out.println(min+min_max);
+	    System.out.println(max+max_min);
+	   
 	    System.out.println(Math.max((min+min_max)+1, (max+max_min)+1));
-	    //System.out.println(min);
+	    //System.out.println((min+min_max);
 	    //System.out.println(min_max);
 	    //System.out.println(max);
 	    //System.out.println(max_min);

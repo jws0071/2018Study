@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class p2_4_9095 {
 	static int[] d = new int[1000+1];
-	public static void Main(String args[]) {
+	public static void main(String args[]) {
 		 Scanner scan = new Scanner(System.in);
 		    int n = scan.nextInt();
 		    System.out.println(f(n));
@@ -12,9 +12,10 @@ public class p2_4_9095 {
 		
 	}
 	public static int f(int n) {
-	    if(n<3) {
-	    	d[n-1] = 2;
-	    	d[n-2] = 1;
+	    if(n<4) {
+	    	d[1]=1;
+	    	d[2]=2;
+	    	d[3]=4;
 	    	return d[n];
 	    }
 	    if(d[n]>0) {  // 한번 계산해서 값이 있으면 그걸 이용려고
