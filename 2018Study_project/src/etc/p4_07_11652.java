@@ -9,14 +9,33 @@ public class p4_07_11652 {
 	
 	Scanner  sc = new Scanner(System.in);
 	int num  = sc.nextInt();
-	int[] arr_num = new int[];
+	int max = 0;
+	int[] arr_num = new int[num];
+	int[] result = new int[num];
 	sc.nextLine();
+	
+	
 	for(int i=0; i<num;i++) {
-		int index = Integer.parseInt(sc.nextLine());
-		arr_num[index] = 
+		arr_num[i] = sc.nextInt();
+
 	}
+	
 	sc.close();
 	Arrays.sort(arr_num);
+	
+	for(int j=0; j<num; j++) {
+		
+		arr_num[i]
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	for(int i=0; i<num;i++) {
@@ -49,6 +68,8 @@ public class p4_07_11652 {
 1
 예제 출력 1 
 1
+
+
 예제 입력 2 
 6
 1
