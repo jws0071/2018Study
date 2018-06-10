@@ -1,85 +1,73 @@
 package etc;
 
-import java.util.Arrays;
-import java.util.Scanner;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.math.BigInteger;
+import java.util.Arrays;
 
 public class p4_07_11652 {
-	public static void main(String args[]) {
-	
-	Scanner  sc = new Scanner(System.in);
-	int num  = sc.nextInt();
-	int max = 0;
-	int[] arr_num = new int[num];
-	int[] result = new int[num];
-	sc.nextLine();
-	
-	
-	for(int i=0; i<num;i++) {
-		arr_num[i] = sc.nextInt();
+	public static void main(String args[]) throws Exception {
+		// 버퍼를 이용해서 입력 값을 받음
+		// (이유 : Scanner를 이용하면 매우 느리기 때문)
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int N = Integer.parseInt(br.readLine());
+		BigInteger[] inputs = new BigInteger[N];
 
-	}
-	
-	sc.close();
-	Arrays.sort(arr_num);
-	
-	for(int j=0; j<num; j++) {
-		
-		arr_num[i]
-		
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	for(int i=0; i<num;i++) {
-		System.out.println(arr_num[i]);
-	}
-			
+		for (int i = 0; i < N; i++) {
+			inputs[i] = new BigInteger(br.readLine());
+		}
+
+		br.close();
+
+		// 입력 값들을 오름차순으로 정렬
+		Arrays.sort(inputs);
+
+		// 최초의 이전 값을 0번 아이템으로 설정
+		BigInteger preNumber = inputs[0];
+
+		// 아이템의 반복되는 횟수를 저장 할 변수
+		int numberCounts = 0;
+
+		// 가장 많이 등장한 아이템의 값을 저장 할 변수
+		BigInteger withMostNumber = BigInteger.ZERO;
+
+		// 가장 많이 등장한 아이템의 반복되는 횟수를 저장 할 변수
+		int withMostNumberCounts = 0;
+
+		for (int i = 0; i < N; i++) {
+			// 이전 아이템 값과 현재 아이템 값이 같은 숫자가 아니라면
+			if (!preNumber.equals(inputs[i])) {
+				// 이전 값의 반복 횟수가 가장 많이 등장한 아이템의 반복 횟수 보다 클 경우에만
+				if (numberCounts > withMostNumberCounts) {
+					// 가장 많이 등장한 아이템의 반복 횟수를 변경
+					withMostNumberCounts = numberCounts;
+
+					// 가장 많이 등장한 아이템의 값을 변경
+					withMostNumber = preNumber;
+				}
+
+				// 아이템의 반복 횟수 초기화
+				numberCounts = 1;
+
+				// 이전 값을 현재 값으로 설정
+				preNumber = inputs[i];
+			}
+
+			else {
+				numberCounts++;
+			}
+		}
+
+		// 입력 값의 마지막 아이템 값은 비교되지 않고 빠져나오므로 마지막으로 비교
+		if (numberCounts > withMostNumberCounts) {
+			withMostNumberCounts = numberCounts;
+			withMostNumber = preNumber;
+		}
+
+		// 결과 값 출력 (가장 많이 등장한 아이템 값)
+		System.out.println(withMostNumber);
 	}
 }
 
 
-/*
-
-
-준규는 숫자 카드 N장을 가지고 있다. 숫자 카드에는 정수가 하나 적혀있는데, 적혀있는 수는 -262보다 크거나 같고, 262보다 작거나 같다.
-
-준규가 가지고 있는 카드가 주어졌을 때, 가장 많이 가지고 있는 정수를 구하는 프로그램을 작성하시오. 만약, 가장 많이 가지고 있는 정수가 여러가지라면, 작은 것을 출력한다.
-
-입력
-첫째 줄에 준규가 가지고 있는 숫자 카드의 개수 N (1 <= N <= 1000000)이 주어진다. 둘째 줄부터 N개 줄에는 숫자 카드에 적혀있는 정수가 주어진다.
-
-출력
-첫째 줄에 준규가 가장 많이 가지고 있는 정수를 출력한다.
-
-예제 입력 1 
-5
-1
-2
-1
-2
-1
-예제 출력 1 
-1
-
-
-예제 입력 2 
-6
-1
-2
-1
-2
-1
-2
-예제 출력 2 
-1
-
-
-*/
