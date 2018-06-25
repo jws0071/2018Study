@@ -25,7 +25,7 @@ public class p3_8_2225 {
 	        
 	    }
 
-
+	    sc.close();
 	    
 	    System.out.println(dp[sum][num]/1000000000);
 	}

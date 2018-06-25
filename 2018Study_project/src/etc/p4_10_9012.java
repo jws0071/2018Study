@@ -46,7 +46,7 @@ public class p4_10_9012 {
 			
 			System.out.println(result[x]);
 		}
-		
+		sc.close();
 
 		
 		

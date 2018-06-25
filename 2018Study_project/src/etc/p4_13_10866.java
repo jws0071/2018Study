@@ -26,7 +26,7 @@ public class p4_13_10866 {
 			sc.nextLine();
 		}
 		
-		
+		sc.close();
 		for(int i=0; i<num;i++) {
 			if(cmd[i][0].equals("push_back")) {
 				push_back(cmd[i][1] );

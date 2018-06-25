@@ -1,6 +1,117 @@
 package etc;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.StringTokenizer;
 
+
+public class p4_05_10825 {
+	public static void main(String args[]) throws Exception {
+		// 버퍼를 통해 입력 값을 받음
+		// (이유 : Scanner를 이용 할 경우 매우 느림)
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int N = Integer.parseInt(br.readLine());
+		ArrayList<User> userArrayList = new ArrayList<>();
+
+		for (int i = 0; i < N; i++) {
+			// 사용자 정보를 받아와서 배열 리스트 형태로 만듬
+			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+			userArrayList.add(new User(st.nextToken(), Integer.parseInt(st.nextToken()),
+					Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken())));
+		}
+
+		br.close();
+
+		// 사용자 배열 리스트 정렬
+		Collections.sort(userArrayList, User.comparator);
+
+		// 버퍼를 통해 출력 값을 만듬
+		// (이유 : System.out.println을 여러번 호출 할 경우 매우 느림)
+		StringBuilder sb = new StringBuilder();
+
+		for (User user : userArrayList) {
+			sb.append(user.name).append("\n");
+		}
+
+		// 출력 값 한꺼번에 출력
+		System.out.println(sb.toString());
+	}
+
+	/**
+	 * 사용자 이너 클래스
+	 * 
+	 * @author devetude
+	 */
+	private static class User {
+		public String name;
+		public int korean;
+		public int english;
+		public int math;
+
+		/**
+		 * 생성자
+		 * 
+		 * @param name
+		 * @param korean
+		 * @param english
+		 * @param math
+		 */
+		public User(String name, int korean, int english, int math) {
+			this.name = name;
+			this.korean = korean;
+			this.english = english;
+			this.math = math;
+		}
+
+		/**
+		 * 사용자 객체 비교 이너 클래스
+		 */
+		private static Comparator<User> comparator = new Comparator<User>() {
+			@Override
+			public int compare(User u1, User u2) {
+				// 국어 점수는 내림차순으로
+				if (u1.korean > u2.korean) {
+					return -1;
+				}
+
+				else if (u1.korean == u2.korean) {
+					// 영어 점수는 오름차순으로
+					if (u1.english > u2.english) {
+						return 1;
+					}
+
+					else if (u1.english == u2.english) {
+						// 수학 점수는 내림차순으로
+						if (u1.math > u2.math) {
+							return -1;
+						}
+
+						else if (u1.math == u2.math) {
+							// 이름은 사전순으로
+							return u1.name.compareTo(u2.name);
+						}
+
+						else {
+							return 1;
+						}
+					}
+
+					else {
+						return -1;
+					}
+				}
+
+				else {
+					return 1;
+				}
+			}
+		};
+	}
+}
+/*
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -48,49 +159,4 @@ public class p4_05_10825 {
 	}
 
 }
-
-
-/*
-
-문제
-도현이네 반 학생 N명의 이름과 국어, 영어, 수학 점수가 주어진다. 이 때, 다음과 같은 조건으로 학생의 성적을 정렬하는 프로그램을 작성하시오.
-
-국어 점수가 감소하는 순서로
-국어 점수가 같으면 영어 점수가 증가하는 순서로
-국어 점수와 영어 점수가 같으면 수학 점수가 감소하는 순서로
-모든 점수가 같으면 이름이 사전 순으로 증가하는 순서로 (단, 아스키 코드에서 대문자는 소문자보다 작으므로 사전순으로 앞에 온다.)
-입력
-첫째 줄에 도현이네 반의 학생의 수 N (1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 한 줄에 하나씩 각 학생의 이름, 국어, 영어, 수학 점수가 공백으로 구분해 주어진다. 점수는 1보다 크거나 같고, 100보다 작거나 같은 자연수이다. 이름은 알파벳 대소문자로 이루어진 문자열이고, 길이는 10자리를 넘지 않는다.
-
-출력
-문제에 나와있는 정렬 기준으로 정렬한 후 첫째 줄부터 N개의 줄에 걸쳐 각 학생의 이름을 출력한다.
-
-예제 입력 1 
-12
-Junkyu 50 60 100
-Sangkeun 80 60 50
-Sunyoung 80 70 100
-Soong 50 60 90
-Haebin 50 60 100
-Kangsoo 60 80 100
-Donghyuk 80 60 100
-Sei 70 70 70
-Wonseob 70 70 90
-Sanghyun 70 70 80
-nsj 80 80 80
-Taewhan 50 60 90
-
-
-예제 출력 1 
-Donghyuk
-Sangkeun
-Sunyoung
-nsj
-Wonseob
-Sanghyun
-Sei
-Kangsoo
-Haebin
-Junkyu
-Soong
-Taewhan */
+*/

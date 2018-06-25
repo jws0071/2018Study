@@ -21,7 +21,7 @@ public class p4_08_11004 {
 		Arrays.sort(arr_num);
 		
 		System.out.println(arr_num[check-1]);
-		
+		sc.close();
 		
 	}
 	

@@ -26,7 +26,7 @@ public class p4_12_10845 {
 			}
 			sc.nextLine();
 		}
-		
+		sc.close();
 		
 		for(int i=0; i<num;i++) {
 			if(cmd[i][0].equals("push")) {
@@ -91,7 +91,7 @@ public class p4_12_10845 {
 		}else {
 			System.out.println("0");
 		}
-
+		
 	}	
 	
 	
