@@ -1,5 +1,5 @@
 package etc;
-
+//틀림
 public class p5_07_1406 {
 
 }

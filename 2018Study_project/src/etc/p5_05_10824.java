@@ -11,7 +11,7 @@ public class p5_05_10824 {
 			String[] input_array = input_data.split(" ");
 			String temp1 = input_array[0]+input_array[1];
 			String temp2 = input_array[2]+input_array[3];
-			System.out.println(Integer.parseInt(temp1)+Integer.parseInt(temp2));
+			System.out.println(Long.parseLong(temp1)+ Long.parseLong(temp2));
 			sc.close();
 		 
 	 }

@@ -1,5 +1,5 @@
 package etc;
-
+//런타임 에러
 import java.util.Scanner;
 
 public class p5_13_1850 {
