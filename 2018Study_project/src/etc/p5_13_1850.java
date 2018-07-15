@@ -1,40 +1,45 @@
 package etc;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 //런타임 에러
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class p5_13_1850 {
-	public static void main(String args[]) {
-		 Scanner sc = new Scanner(System.in); 
-    int a = sc.nextInt(); 
-    int b = sc.nextInt(); 
-    
-    
-    String a_temp ="";
-    String b_temp ="";
-    
-    for(int i=0;i<a;i++){
+	public static void main(String args[]) throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader( new InputStreamReader( System.in ) );
+		StringTokenizer st = new StringTokenizer( br.readLine() );
 
-    	a_temp = a_temp + "1";
-    	
-    }
-    for(int i=0;i<b;i++){
-    	b_temp = b_temp + "1";
-    }
+		long a = Long.parseLong( st.nextToken() );
+		long b= Long.parseLong( st.nextToken() );
 
-    a = Integer.parseInt(a_temp);
-    b = Integer.parseInt(b_temp);
-    int aa = a;
-    int bb = b;
+		 String result ="";
+   
+    long aa = a;
+    long bb = b;
     while(a>0){ 
       if(a<b){ 
-        int temp = a; 
+      	long temp = a; 
         a = b; 
         b = temp; 
       } 
       a = a%b; 
     } 
-    System.out.println(b);
-    sc.close();
+
+    for(int i=0;i<b;i++){
+    		System.out.print(1);
+    	//result = result + "1";
+    	
+    }
+    /*
+    BufferedWriter bw = new BufferedWriter( new OutputStreamWriter( System.out ) );
+    bw.write( Long.toString(b));
+    bw.flush();
+    bw.close(); 1000000000000000000 1000000000000000000
+    */
 }
 	
 }

@@ -1,5 +1,46 @@
 package etc;
 //틀림
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+public class p5_09_1168 {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		
+		StringBuilder sb = new StringBuilder("<");
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		
+		int n = Integer.parseInt(st.nextToken());
+		int m = Integer.parseInt(st.nextToken()) - 1;
+
+        for(int i=1;i<=n;i++) {
+        		list.add(i);
+        }
+        
+        int index = 0;
+        
+        while(!list.isEmpty()) {
+	        	index += m;
+	        	
+	        	if (index >= list.size()) {
+	        		index %= list.size();
+	        	}
+	        	
+	        sb.append(list.remove(index) + ", ");	
+        }
+        System.out.println(sb.toString().substring(0, sb.length()-2) + ">");
+	}
+}
+
+
+
+
+/*
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -61,3 +102,4 @@ public class p5_09_1168 {
 	 
  }
 }
+*/

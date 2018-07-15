@@ -1,5 +1,5 @@
 package etc;
-//틀림
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -16,7 +16,7 @@ public class p5_06_11656 {
 			  		 temp += cnt.charAt(j); 
 			  	 }
 			  	 array[i] = temp;
-			  	 System.out.println(array[i]);
+			  	 //System.out.println(array[i]);
 			   }
 			 Arrays.sort(array);
 			 for(int x = 0; x<array.length;x++) {

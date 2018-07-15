@@ -1,5 +1,49 @@
 package etc;
 //틀림
+import java.util.LinkedList;
+import java.util.Scanner;
+ 
+//1158 조세퍼스
+public class p5_08_1158 {
+    
+    static int N;
+    static int M;
+    static StringBuilder sb;
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        sb = new StringBuilder();
+        sb.append("<");
+        N = sc.nextInt();
+        M = sc.nextInt();
+        
+        LinkedList<Integer> list = new LinkedList<>();
+        for(int i=1; i<=N; ++i){
+            list.add(i);
+        }
+        f(list);
+        
+        System.out.println(sb.toString().substring(0,sb.length()-2)+">");
+        sc.close();
+    }
+    
+    public static void f(LinkedList<Integer> list){
+        
+        int kill = 0; 
+        while(N>0){
+            for(int i=0; i<M-1; ++i){
+                ++kill;
+                if(kill > N-1) { kill=0;}
+            }
+            sb.append(list.get(kill)+", ");
+            list.remove(kill);
+            if(kill==list.size()) kill=0;
+            
+            N--;
+        }
+    }
+}
+
+/*
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -18,10 +62,16 @@ public class p5_08_1158 {
 			list.add(i);
 		}
 		while(list.size() > 0) {
-
-			
+			//System.out.println("0 " +up_index);	
+			//System.out.println("size " +list.size());
 			if(list.size() <= del-1) {
-			  for (int i =0; i<list.size();i++) {
+				//System.out.println("1 " +up_index);
+				for (int x = up_index; x<list.size();x++) {
+					
+					list_result.add(list.get(x));
+					
+				}
+			  for (int i =0; i<up_index;i++) {
 			  	list_result.add(list.get(i));
 			  }
 			  for (int j =0; j<list.size();j++) {
@@ -29,13 +79,15 @@ public class p5_08_1158 {
 			  }
 			break;
 	
-			}else if((up_index+del)-1 > list.size()) {
-				int temp = (up_index+del)-1 - list.size();
-				up_index = temp;
+			}else if((up_index+del)-1 >= list.size()) {
+				//System.out.println("2 " +up_index);				
+				int temp = (up_index+del) - list.size();
+				up_index = temp-1;
 				list_result.add(list.get(up_index));
 				list.remove(up_index);
 
 			}else {
+				//System.out.println("3 " +up_index);
 				up_index += del-1;
 				list_result.add(list.get(up_index));
 				list.remove(up_index);
@@ -46,7 +98,9 @@ public class p5_08_1158 {
 		}
 		
 		for(int x=0;x<list_result.size();x++) {
-			if(x == 0) {
+		  if(list_result.size() == 1 ) {
+		  	System.out.print("<"+list_result.get(x)+">");
+		  }else if(x == 0) {
 				System.out.print("<"+list_result.get(x)+", ");	
 			}else if(x==list_result.size()-1) {
 				System.out.print(list_result.get(x)+">");
@@ -62,7 +116,7 @@ public class p5_08_1158 {
  }
 }
 
-
+*/
 /*
 문제
 조세퍼스 문제는 다음과 같다.
